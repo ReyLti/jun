@@ -7,8 +7,12 @@ def get_time(string):
     return chas*3600+min*60+(sec+int(l[1])/(10**(len(l[1])-1)))
 
 file = open("results_RUN.txt","r")
-time: float = 61200
+times_start = []
+times_finish = []
 for line in file:
-    if get_time(line)<time:
-        first:str = line.split()[0]
-print(first)
+    if line.split()[1] == "start":
+        times_start.append(get_time(line))
+    else:
+        times_finish.append(get_time(line))
+print(times_start)
+print(times_finish)
